@@ -1,0 +1,31 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>ChBeButton.qml</file>
+        <file>ChBeStatusButton.qml</file>
+        <file>ChBeTimerButton.qml</file>
+        <file>ChBeCheckBox.qml</file>
+        <file>checked.png</file>
+        <file>ChBeBackground.qml</file>
+        <file>ChBeVProgressBar.qml</file>
+        <file>ChBeHProgressBar.qml</file>
+        <file>ChBeHSlider.qml</file>
+        <file>ChBeInfoBox.qml</file>
+        <file>windy.png</file>
+        <file>HomeSlide.qml</file>
+        <file>CtrlSlide.qml</file>
+        <file>StatusSlide.qml</file>
+        <file>ChBeTabText.qml</file>
+        <file>ChBeWeatherBox.qml</file>
+        <file>rain.png</file>
+        <file>ChBeWeatherTableau.qml</file>
+        <file>ChBeToggleButton.qml</file>
+        <file>ChBeButtonsZip.qml</file>
+        <file>ChBeButtonsJal.qml</file>
+        <file>LogSlide.qml</file>
+        <file>ChBeAutoRepeatButton.qml</file>
+        <file>SwitchSlide.qml</file>
+        <file>ChBeButtonBox.qml</file>
+        <file>ChBeExperimentalButton.qml</file>
+    </qresource>
+</RCC>
