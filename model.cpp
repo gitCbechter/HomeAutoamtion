@@ -23,6 +23,8 @@ Model::Model()
         jals[i].time = 0;
         jals[i].automatic = 0;
     }
+    windLimitZip = 400;//windSpeed in cm/s
+    windLimtJal = 800;//windSpeed in cm/s
 
 }
 /*********************************************************************

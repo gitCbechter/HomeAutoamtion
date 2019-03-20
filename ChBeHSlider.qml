@@ -14,6 +14,7 @@ Item {
     //Slider Actions
     property int val: 0
     signal valSliderChanged(int val)
+
     Rectangle{
         width: root.slideW + pill.width
         height: root.slideH
@@ -33,7 +34,7 @@ Item {
             id: pill
             width: 32
             height: root.slideH
-            x: 0
+            x: val * root.slideW / 1000//0
             y: 0
             color: root.slideInActive
             border.color: "black"

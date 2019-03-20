@@ -15,8 +15,8 @@ Item {
         bagrH: root.hpH
         bagrX: root.hpX
         bagrY: root.hpY
-        gradColorStart: "gray"
-        gradColorStop: "#404040"
+        gradColorStart: "white"
+        gradColorStop: "black"
     }
 
     ChBeInfoBox{

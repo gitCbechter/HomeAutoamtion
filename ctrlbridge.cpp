@@ -92,7 +92,7 @@ void CtrlBridge::zipButtonMessy(int data)
     switch(data)
     {
         case 0://STOP pressed
-            refMod->updateActorData(ACTOR_ZIP,ZIP_PRINCESS,ZIPSTOP_CMD);
+            refMod->updateActorData(ACTOR_ZIP,ZIP_MESSY,ZIPSTOP_CMD);
         break;
         case 1://UP pressed
             refMod->updateActorData(ACTOR_ZIP,ZIP_MESSY,ZIPUP_CMD);
@@ -309,6 +309,18 @@ void CtrlBridge::jalButtonEating(int data)
 void CtrlBridge::hutLightSwitched(int data)
 {
     qDebug() << "Button Toggling status of Hut Light: " << data;
+    switch(data)
+    {
+        case -1://OFF pressed
+            refMod->updateActorData(ACTOR_OUTDOOR,SW_HUT,ACTOFF_CMD);
+        break;
+        case 1://ON pressed
+            refMod->updateActorData(ACTOR_OUTDOOR,SW_HUT,ACTON_CMD);
+        break;
+        default:
+            refMod->updateActorData(ACTOR_OUTDOOR,SW_HUT,ACTOFF_CMD);
+        break;
+    }
 }
 /*********************************************************************
 * method: outPumpSwitched
@@ -318,6 +330,18 @@ void CtrlBridge::hutLightSwitched(int data)
 void CtrlBridge::outPumpSwitched(int data)
 {
     qDebug() << "Button Toggling status of Power Pump: " << data;
+    switch(data)
+    {
+        case -1://OFF pressed
+            refMod->updateActorData(ACTOR_OUTDOOR,SW_PUMP,ACTOFF_CMD);
+        break;
+        case 1://ON pressed
+            refMod->updateActorData(ACTOR_OUTDOOR,SW_PUMP,ACTON_CMD);
+        break;
+        default:
+            refMod->updateActorData(ACTOR_OUTDOOR,SW_PUMP,ACTOFF_CMD);
+        break;
+    }
 }
 /*********************************************************************
 * method: indoorWindow
@@ -327,4 +351,16 @@ void CtrlBridge::outPumpSwitched(int data)
 void CtrlBridge::indoorWindow(int data)
 {
     qDebug() << "Button Toggling status of Indoor Window: " << data;
+    switch(data)
+    {
+        case -1://OFF pressed
+            refMod->updateActorData(ACTOR_INDOOR,SW_WIN,ACTCLOSE_CMD);
+        break;
+        case 1://ON pressed
+            refMod->updateActorData(ACTOR_INDOOR,SW_WIN,ACTOPEN_CMD);
+        break;
+        default:
+            refMod->updateActorData(ACTOR_INDOOR,SW_WIN,ACTOFF_CMD);
+        break;
+    }
 }

@@ -52,8 +52,15 @@ Item {
         boxW: 264
         boxHead: "Sleeping Room"
         boxHeadBackColor: "gray"
-        durationUp: 2500
-        durationDwn: 2500
+        //durationUp: 2500
+        //durationDwn: 2500
+        Connections {
+            target: statusbridge
+            onSendTimeZip: {
+                btnBoxSleep.durationUp = timeZip
+                btnBoxSleep.durationDwn = timeZip
+            }
+        }
         onClickedStop: ctrlbridge.zipButtonSleep(0)
         onClickedUp: ctrlbridge.zipButtonSleep(1)
         onClickedDwn: ctrlbridge.zipButtonSleep(2)
@@ -70,8 +77,15 @@ Item {
         boxW: 264
         boxHead: "Princesses Room"
         boxHeadBackColor: "gray"
-        durationUp: 2500
-        durationDwn: 2500
+        //durationUp: 2500
+        //durationDwn: 2500
+        Connections {
+            target: statusbridge
+            onSendTimeZip: {
+                btnBoxPrincess.durationUp = timeZip
+                btnBoxPrincess.durationDwn = timeZip
+            }
+        }
         onClickedStop: ctrlbridge.zipButtonPrincess(0)
         onClickedUp: ctrlbridge.zipButtonPrincess(1)
         onClickedDwn: ctrlbridge.zipButtonPrincess(2)
@@ -88,8 +102,15 @@ Item {
         boxW: 264
         boxHead: "Messy Room"
         boxHeadBackColor: "gray"
-        durationUp: 2500
-        durationDwn: 2500
+        //durationUp: 2500
+        //durationDwn: 2500
+        Connections {
+            target: statusbridge
+            onSendTimeZip: {
+                btnBoxMessy.durationUp = timeZip
+                btnBoxMessy.durationDwn = timeZip
+            }
+        }
         onClickedStop: ctrlbridge.zipButtonMessy(0)
         onClickedUp: ctrlbridge.zipButtonMessy(1)
         onClickedDwn: ctrlbridge.zipButtonMessy(2)
@@ -129,8 +150,16 @@ Item {
         boxW: 264
         boxHead: "Terrace Door"
         boxHeadBackColor: "gray"
-        durationUp: 2500
-        durationDwn: 2500
+        //durationUp: 2500
+        //durationDwn: 2500
+        Connections {
+            target: statusbridge
+            onSendTimeJal: {
+                btnJalI.durationUp = timeJal
+                btnJalI.durationDwn = timeJal
+            }
+        }
+
         onClickedStop: ctrlbridge.jalButtonTerrace(0)
         onClickedUp: ctrlbridge.jalButtonTerrace(1)
         onClickedDwn: ctrlbridge.jalButtonTerrace(2)
@@ -151,8 +180,15 @@ Item {
         boxW: 264
         boxHead: "All Ground"
         boxHeadBackColor: "gray"
-        durationUp: 2500
-        durationDwn: 2500
+        //durationUp: 2500
+        //durationDwn: 2500
+        Connections {
+            target: statusbridge
+            onSendTimeJal: {
+                btnJalII.durationUp = timeJal
+                btnJalII.durationDwn = timeJal
+            }
+        }
         onClickedStop: ctrlbridge.jalButtonAll(0)
         onClickedUp: ctrlbridge.jalButtonAll(1)
         onClickedDwn: ctrlbridge.jalButtonAll(2)
@@ -173,8 +209,15 @@ Item {
         boxW: 264
         boxHead: "Eating Space"
         boxHeadBackColor: "gray"
-        durationUp: 2500
-        durationDwn: 2500
+        //durationUp: 2500
+        //durationDwn: 2500
+        Connections {
+            target: statusbridge
+            onSendTimeJal: {
+                btnJalIII.durationUp = timeJal
+                btnJalIII.durationDwn = timeJal
+            }
+        }
         onClickedStop: ctrlbridge.jalButtonEating(0)
         onClickedUp: ctrlbridge.jalButtonEating(1)
         onClickedDwn: ctrlbridge.jalButtonEating(2)
@@ -195,8 +238,15 @@ Item {
         boxW: 264
         boxHead: "Living Space"
         boxHeadBackColor: "gray"
-        durationUp: 2500
-        durationDwn: 2500
+        //durationUp: 2500
+        //durationDwn: 2500
+        Connections {
+            target: statusbridge
+            onSendTimeJal: {
+                btnJalIV.durationUp = timeJal
+                btnJalIV.durationDwn = timeJal
+            }
+        }
         onClickedStop: ctrlbridge.jalButtonLiving(0)
         onClickedUp: ctrlbridge.jalButtonLiving(1)
         onClickedDwn: ctrlbridge.jalButtonLiving(2)

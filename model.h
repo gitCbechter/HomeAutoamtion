@@ -69,6 +69,8 @@ public:
     //Members
     Com *myCom; //the centralistic (DI) HAL-Object everything will be based on
 
+    int windLimitZip;
+    int windLimtJal;
 
     sDataSensor sensorOut[4];
     sDataSensor sensorIn[4];
