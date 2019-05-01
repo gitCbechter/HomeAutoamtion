@@ -50,7 +50,7 @@
 enum eRS485State {RS485_IDLE=0, RS485_BUSYTX=1, RS485_BUSYRX=2};
 
 enum eSensorIndex {SENSOR_0 = 0, SENSOR_1 = 1, SENSOR_2 = 2, SENSOR_3 = 3};
-enum eActorIndex {ACTOR_ZIP = 0, ACTOR_JAL = 1, ACTOR_INDOOR = 2, ACTOR_OUTDOOR = 3};
+enum eActorIndex {ACTOR_GEN = 0, ACTOR_ZIP = 1, ACTOR_JAL = 2, ACTOR_INDOOR = 3, ACTOR_OUTDOOR = 4};
 enum eActorCmdType {ZIPUP_CMD = 0, JALUP_CMD = 1, LAMUP_CMD = 2, ACTON_CMD = 3, ZIPDWN_CMD = 4, JALDWN_CMD = 5, LAMDWN_CMD = 6, ACTOFF_CMD = 7, ZIPSTOP_CMD = 8, JALSTOP_CMD = 9, JALLAMTIME_CMD = 10, ACTOPEN_CMD = 11, ACTCLOSE_CMD = 12};
 
 /*********************************************************************
