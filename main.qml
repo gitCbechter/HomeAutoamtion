@@ -27,6 +27,14 @@ ApplicationWindow {
             }
         }
         Page {
+            WeatherSlide {
+                hpW: appl.width
+                hpH: appl.height
+                hpX: 0
+                hpY: 0
+            }
+        }
+        Page {
             CtrlSlide {
                 hpW: appl.width
                 hpH: appl.height
@@ -67,6 +75,12 @@ ApplicationWindow {
             id:tabHome
             ChBeTabText{
                 tabText: "HOME"
+            }
+        }
+        TabButton {
+            id:tabWeather
+            ChBeTabText{
+                tabText: "WEATHER"
             }
         }
         TabButton {

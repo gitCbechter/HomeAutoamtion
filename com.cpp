@@ -4,6 +4,7 @@
  * info:  None
  ********************************************************************/
 #include "com.h"
+
 /*********************************************************************
 * method: ComNodes
 * brief:  Constructor of the ComNodes Object
@@ -39,6 +40,14 @@ Com::Com(QObject *parent) : QObject(parent)
     timerRS485Com = new QTimer(this);
     connect(timerRS485Com, SIGNAL(timeout()),this,SLOT(comRS485TimerTrigger()));
     timerRS485Com->start(50);
+
+    indoorTemp = 0;
+    outdoorTemp = 0;
+    indoorHumi = 0;
+    outdoorHumi = 0;
+    indoorPress = 0;
+    outdoorPress = 0;
+    windSpeed = 0;
 }
 /*********************************************************************
 * method: setup485TX
@@ -103,7 +112,7 @@ void Com::setActorContent(eActorIndex actorID, uint16_t data, eActorCmdType cmd)
 {
     unsigned int crc;
     txBuffer[txIndexPending][0] = ADR_ACTOR;
-    txBuffer[txIndexPending][1] = static_cast<unsigned char>(actorID);    
+    txBuffer[txIndexPending][1] = static_cast<unsigned char>(actorID);
     txBuffer[txIndexPending][2] = static_cast<unsigned char>(cmd);
     txBuffer[txIndexPending][3] = static_cast<unsigned char>(data>>8);
     txBuffer[txIndexPending][4] = static_cast<unsigned char>(data);
@@ -159,7 +168,9 @@ void Com::comRS485TimerTrigger()
                 {
                     rxIndexPending = (rxIndexPending+1)&0x0F;
                     txIndexDone = (txIndexDone+1)&0x0F;
+                    protocolHandler();
                     errorCounterCrc = 0;
+                    errorCounterBus = 0;
                 }
                 else
                 {
@@ -202,4 +213,41 @@ uint16_t Com::checkBusData(uint8_t *ptr, uint16_t len)
     uint16_t crc;
     crc = myCalcs->crc16_CCITT(ptr, len);
     return crc;
+}
+/*********************************************************************
+* method: protocolHandler
+* brief:  UART protoccol analyzer. Gets the data and acts accordingly
+* params: len, the length of the received data without the CRC
+* type|index|Data....... |CRCh|CRCl
+* DATA:
+* type==Indoor -> tempH|tempL|HumiH|HumiL|PressH|PressL
+* type==Outdoor -> tempH|tempL|WindH|WindL|HumiH|HumiL|
+*********************************************************************/
+void Com::protocolHandler()
+{
+    uint8_t index;
+    index = rxIndexDone;
+    if(rxIndexPending!=rxIndexDone)
+    {
+        switch(rxBuffer[index][0])
+        {
+            case ADR_OUTDOOR:
+                outdoorTemp = static_cast<int16_t>(rxBuffer[index][2]<<8 | rxBuffer[index][3]);
+                windSpeed = static_cast<int16_t>(rxBuffer[index][4]<<8 | rxBuffer[index][5]);
+                outdoorHumi = static_cast<int16_t>(rxBuffer[index][6]<<8 | rxBuffer[index][7]);
+            break;
+            case ADR_INDOOR:
+                indoorTemp = static_cast<int16_t>(rxBuffer[index][2]<<8 | rxBuffer[index][3]);
+                indoorHumi = static_cast<int16_t>(rxBuffer[index][4]<<8 | rxBuffer[index][5]);
+                indoorPress = static_cast<int16_t>(rxBuffer[index][6]<<8 | rxBuffer[index][7]);
+            break;
+            case ADR_ACTOR:
+                //nothing to be done... ACK just not analyzed...
+            break;
+            default:
+                qDebug() << "ERROR-> UART communication -> Wrong Protocol!";
+            break;
+        }
+        rxIndexDone = (rxIndexDone + 1)&0x0F;
+    }
 }

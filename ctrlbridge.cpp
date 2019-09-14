@@ -38,16 +38,16 @@ void CtrlBridge::zipButtonSleep(int data)
     switch(data)
     {
         case 0://STOP pressed
-            refMod->updateActorData(ACTOR_GEN,ZIP_SLEEPING,ZIPSTOP_CMD);
+            refMod->updateActorData(ACTOR_ZIP,ZIP_SLEEPING,ZIPSTOP_CMD);
         break;
         case 1://UP pressed
-            refMod->updateActorData(ACTOR_GEN,ZIP_SLEEPING,ZIPUP_CMD);
+            refMod->updateActorData(ACTOR_ZIP,ZIP_SLEEPING,ZIPUP_CMD);
         break;
         case 2://DWN pressed
-            refMod->updateActorData(ACTOR_GEN,ZIP_SLEEPING,ZIPDWN_CMD);
+            refMod->updateActorData(ACTOR_ZIP,ZIP_SLEEPING,ZIPDWN_CMD);
         break;
         default:
-            refMod->updateActorData(ACTOR_GEN,ZIP_SLEEPING,ZIPSTOP_CMD);
+            refMod->updateActorData(ACTOR_ZIP,ZIP_SLEEPING,ZIPSTOP_CMD);
         break;
     }
 }
@@ -65,16 +65,16 @@ void CtrlBridge::zipButtonPrincess(int data)
     switch(data)
     {
         case 0://STOP pressed
-            refMod->updateActorData(ACTOR_GEN,ZIP_PRINCESS,ZIPSTOP_CMD);
+            refMod->updateActorData(ACTOR_ZIP,ZIP_PRINCESS,ZIPSTOP_CMD);
         break;
         case 1://UP pressed
-            refMod->updateActorData(ACTOR_GEN,ZIP_PRINCESS,ZIPUP_CMD);
+            refMod->updateActorData(ACTOR_ZIP,ZIP_PRINCESS,ZIPUP_CMD);
         break;
         case 2://DWN pressed
-            refMod->updateActorData(ACTOR_GEN,ZIP_PRINCESS,ZIPDWN_CMD);
+            refMod->updateActorData(ACTOR_ZIP,ZIP_PRINCESS,ZIPDWN_CMD);
         break;
         default:
-            refMod->updateActorData(ACTOR_GEN,ZIP_PRINCESS,ZIPSTOP_CMD);
+            refMod->updateActorData(ACTOR_ZIP,ZIP_PRINCESS,ZIPSTOP_CMD);
         break;
     }
 }
@@ -92,16 +92,16 @@ void CtrlBridge::zipButtonMessy(int data)
     switch(data)
     {
         case 0://STOP pressed
-            refMod->updateActorData(ACTOR_GEN,ZIP_MESSY,ZIPSTOP_CMD);
+            refMod->updateActorData(ACTOR_ZIP,ZIP_MESSY,ZIPSTOP_CMD);
         break;
         case 1://UP pressed
-            refMod->updateActorData(ACTOR_GEN,ZIP_MESSY,ZIPUP_CMD);
+            refMod->updateActorData(ACTOR_ZIP,ZIP_MESSY,ZIPUP_CMD);
         break;
         case 2://DWN pressed
-            refMod->updateActorData(ACTOR_GEN,ZIP_MESSY,ZIPDWN_CMD);
+            refMod->updateActorData(ACTOR_ZIP,ZIP_MESSY,ZIPDWN_CMD);
         break;
         default:
-            refMod->updateActorData(ACTOR_GEN,ZIP_MESSY,ZIPSTOP_CMD);
+            refMod->updateActorData(ACTOR_ZIP,ZIP_MESSY,ZIPSTOP_CMD);
         break;
     }
 }
@@ -120,22 +120,22 @@ void CtrlBridge::jalButtonTerrace(int data)
     switch(data)
     {
         case 0://STOP pressed
-            refMod->updateActorData(ACTOR_GEN,JAL_TERRACE,JALSTOP_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_TERRACE,JALSTOP_CMD);
         break;
         case 1://UP pressed
-            refMod->updateActorData(ACTOR_GEN,JAL_TERRACE,JALUP_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_TERRACE,JALUP_CMD);
         break;
         case 2://DWN pressed
-            refMod->updateActorData(ACTOR_GEN,JAL_TERRACE,JALDWN_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_TERRACE,JALDWN_CMD);
         break;
         case 3://UP pressed
-            refMod->updateActorData(ACTOR_GEN,JAL_TERRACE,LAMUP_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_TERRACE,LAMUP_CMD);
         break;
         case 4://DWN pressed
-            refMod->updateActorData(ACTOR_GEN,JAL_TERRACE,LAMDWN_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_TERRACE,LAMDWN_CMD);
         break;
         default:
-            refMod->updateActorData(ACTOR_GEN,JAL_TERRACE,JALSTOP_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_TERRACE,JALSTOP_CMD);
         break;
     }
 }
@@ -155,22 +155,22 @@ void CtrlBridge::jalButtonAll(int data)
     switch(data)
     {
         case 0://STOP pressed
-            refMod->updateActorData(ACTOR_GEN,JAL_ALL,JALSTOP_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_ALL,JALSTOP_CMD);
         break;
         case 1://UP pressed
-            refMod->updateActorData(ACTOR_GEN,JAL_ALL,JALUP_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_ALL,JALUP_CMD);
         break;
         case 2://DWN pressed
-            refMod->updateActorData(ACTOR_GEN,JAL_ALL,JALDWN_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_ALL,JALDWN_CMD);
         break;
         case 3://UP pressed
-            refMod->updateActorData(ACTOR_GEN,JAL_ALL,LAMUP_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_ALL,LAMUP_CMD);
         break;
         case 4://DWN pressed
-            refMod->updateActorData(ACTOR_GEN,JAL_ALL,LAMDWN_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_ALL,LAMDWN_CMD);
         break;
         default:
-            refMod->updateActorData(ACTOR_GEN,JAL_ALL,JALSTOP_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_ALL,JALSTOP_CMD);
         break;
     }
 }
@@ -209,6 +209,10 @@ void CtrlBridge::jalCheckBoxAll(bool data)
 void CtrlBridge::jalLamTimeAll(int data)
 {
     qDebug() << "Time LAM at Ctrl Page AllGround pressed: " << data;
+    if(data<20)
+    {
+        data = 20;
+    }
     refMod->jals[0].time = static_cast<uint16_t>(data);
     refMod->jals[1].time = static_cast<uint16_t>(data);
     refMod->jals[2].time = static_cast<uint16_t>(data);
@@ -219,7 +223,7 @@ void CtrlBridge::jalLamTimeAll(int data)
 void CtrlBridge::timerLamTimeTxTrigger()
 {
     timerLamTimeTx->stop();
-    refMod->updateActorData(ACTOR_GEN,refMod->jals[0].time,JALLAMTIME_CMD);
+    refMod->updateActorData(ACTOR_JAL,refMod->jals[0].time,JALLAMTIME_CMD);
 }
 //Window Kitchen Functionalities
 /*********************************************************************
@@ -236,22 +240,22 @@ void CtrlBridge::jalButtonLiving(int data)
     switch(data)
     {
         case 0://STOP pressed
-            refMod->updateActorData(ACTOR_GEN,JAL_LIVING,JALSTOP_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_LIVING,JALSTOP_CMD);
         break;
         case 1://UP pressed
-            refMod->updateActorData(ACTOR_GEN,JAL_LIVING,JALUP_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_LIVING,JALUP_CMD);
         break;
         case 2://DWN pressed
-            refMod->updateActorData(ACTOR_GEN,JAL_LIVING,JALDWN_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_LIVING,JALDWN_CMD);
         break;
         case 3://UP pressed
-            refMod->updateActorData(ACTOR_GEN,JAL_LIVING,LAMUP_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_LIVING,LAMUP_CMD);
         break;
         case 4://DWN pressed
-            refMod->updateActorData(ACTOR_GEN,JAL_LIVING,LAMDWN_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_LIVING,LAMDWN_CMD);
         break;
         default:
-            refMod->updateActorData(ACTOR_GEN,JAL_LIVING,JALSTOP_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_LIVING,JALSTOP_CMD);
         break;
     }
 }
@@ -271,22 +275,22 @@ void CtrlBridge::jalButtonEating(int data)
     switch(data)
     {
         case 0://STOP pressed
-            refMod->updateActorData(ACTOR_GEN,JAL_EATING,JALSTOP_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_EATING,JALSTOP_CMD);
         break;
         case 1://UP pressed
-            refMod->updateActorData(ACTOR_GEN,JAL_EATING,JALUP_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_EATING,JALUP_CMD);
         break;
         case 2://DWN pressed
-            refMod->updateActorData(ACTOR_GEN,JAL_EATING,JALDWN_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_EATING,JALDWN_CMD);
         break;
         case 3://UP pressed
-            refMod->updateActorData(ACTOR_GEN,JAL_EATING,LAMUP_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_EATING,LAMUP_CMD);
         break;
         case 4://DWN pressed
-            refMod->updateActorData(ACTOR_GEN,JAL_EATING,LAMDWN_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_EATING,LAMDWN_CMD);
         break;
         default:
-            refMod->updateActorData(ACTOR_GEN,JAL_EATING,JALSTOP_CMD);
+            refMod->updateActorData(ACTOR_JAL,JAL_EATING,JALSTOP_CMD);
         break;
     }
 }

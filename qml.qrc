@@ -27,5 +27,7 @@
         <file>SwitchSlide.qml</file>
         <file>ChBeButtonBox.qml</file>
         <file>ChBeExperimentalButton.qml</file>
+        <file>WeatherSlide.qml</file>
+        <file>ChBeMarqueeBox.qml</file>
     </qresource>
 </RCC>

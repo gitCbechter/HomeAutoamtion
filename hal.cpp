@@ -99,7 +99,7 @@ int Hal::readGpio(eGpio name)
 *********************************************************************/
 int Hal::setupUart(int baud)
 {
-    if((uartFd = serialOpen ("/dev/ttyAMA0", baud)) < 0)
+    if((uartFd = serialOpen ("/dev/ttyS0", baud)) < 0)
     {
         return -1;
     }

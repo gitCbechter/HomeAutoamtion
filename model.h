@@ -64,7 +64,8 @@ public:
     void updateActorData(eActorIndex index, uint16_t data, eActorCmdType cmd);
 
     void protocolHandler();
-
+    void getIndoorData();
+    void getOutdoorData();
 
     //Members
     Com *myCom; //the centralistic (DI) HAL-Object everything will be based on
@@ -106,6 +107,7 @@ public:
     int pReadPressIn() const{
         return sensorIn[pSensorIndex()].press;
     }
+
     eActorIndex pActorIndex() const{
         return indexActor;
     }
@@ -124,6 +126,7 @@ public:
     void pActorStatusSet(uint16_t status){
         actor[pActorIndex()].status = status;
     }
+
 
 
 

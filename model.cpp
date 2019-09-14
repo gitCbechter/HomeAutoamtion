@@ -101,32 +101,18 @@ void Model::updateActorData(eActorIndex index, uint16_t data, eActorCmdType cmd)
 * type==Indoor -> tempH|tempL|HumiH|HumiL|PressH|PressL
 * type==Outdoor -> tempH|tempL|WindH|WindL|HumiH|HumiL|
 *********************************************************************/
-void Model::protocolHandler()
+void Model::getIndoorData()
 {
-    uint8_t index;
-    index = myCom->rxIndexDone;
-    if(myCom->rxIndexPending!=myCom->rxIndexDone)
-    {
-        switch(myCom->rxBuffer[index][0])
-        {
-            case ADR_OUTDOOR:
-                sensorOut[myCom->rxBuffer[index][1]].temp = myCom->rxBuffer[index][2]<<8 | myCom->rxBuffer[index][3];
-                sensorOut[myCom->rxBuffer[index][1]].wind = myCom->rxBuffer[index][4]<<8 | myCom->rxBuffer[index][5];
-                sensorOut[myCom->rxBuffer[index][1]].humi = myCom->rxBuffer[index][6]<<8 | myCom->rxBuffer[index][7];
-            break;
-            case ADR_INDOOR:
-                sensorIn[myCom->rxBuffer[index][1]].temp = myCom->rxBuffer[index][2]<<8 | myCom->rxBuffer[index][3];
-                sensorIn[myCom->rxBuffer[index][1]].humi = myCom->rxBuffer[index][4]<<8 | myCom->rxBuffer[index][5];
-                sensorIn[myCom->rxBuffer[index][1]].press = myCom->rxBuffer[index][6]<<8 | myCom->rxBuffer[index][7];
-            break;
-            case ADR_ACTOR:
+    sensorIn[0].temp = myCom->indoorTemp;
+    sensorIn[0].humi = myCom->indoorHumi;
+    sensorIn[0].press = myCom->indoorPress;
 
-            break;
-            default:
-                qDebug() << "ERROR-> UART communication -> Wrong Protocol!";
-            break;
-        }
-        myCom->rxIndexDone = (myCom->rxIndexDone + 1)&0x0F;
-    }
 }
+void Model::getOutdoorData()
+{
+    sensorOut[0].temp = myCom->outdoorTemp;
+    sensorOut[0].wind = myCom->windSpeed;
+    sensorOut[0].humi = myCom->outdoorHumi;
+}
+
 

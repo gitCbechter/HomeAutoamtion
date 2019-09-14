@@ -16,6 +16,7 @@
 #include <QTime>
 #include "model.h"
 #include "calcs.h"
+#include "newstickerdata.h"
 /*********************************************************************
 *Defines & Enums
 *********************************************************************/
@@ -32,6 +33,14 @@ public:
     Model *refMod; //the global and generic model objects reference
     QTimer *timerSensors;
     eSensorDataState sensorSSM;
+
+    QNetworkAccessManager *managerTicker;//http request manger
+    QNetworkRequest requestTicker;//http request
+    NewsTickerData *myNews;
+    QTimer *timerNewsUpdater;
+    int newsIndex;
+    int newsNum;
+
 signals:
     void sendTimeInfo(QString timeString, QString dateString);
     void sendOutTempInfo(QString temperatureString);
@@ -40,11 +49,18 @@ signals:
     void sendInHumiInfo(QString humiString);
     void sendPressInfo(QString pressString);
     void sendWindSpeedInfo(QString windSpeedString);
+    void sendLine1(QString txt);
+    void sendLine2(QString txt);
+    void sendLine3(QString txt);
+
 
 public slots:
     //C++
     void timeInfoUpdating();
     void timeSensorUpdating();
+    void tickerUpdating();
+    void tickerFinished(QNetworkReply *reply);
+    void tickerInfoUpdating();
 
 };
 

@@ -67,7 +67,7 @@ signals:
     void sendWeatherData22(double maxTemp, double minTemp, double windSpeed, double snow, double rainLitre, double humidity, double pressure, int cloudiness, QString iconId, QString dateInfo);
     void sendWeatherData23(double maxTemp, double minTemp, double windSpeed, double snow, double rainLitre, double humidity, double pressure, int cloudiness, QString iconId, QString dateInfo);
     void sendWeatherData24(double maxTemp, double minTemp, double windSpeed, double snow, double rainLitre, double humidity, double pressure, int cloudiness, QString iconId, QString dateInfo);
-
+    void sendRanges(double maxTemp, double minTemp, double maxWindSpeed, double minWindSpeed, double maxRain);
 
 public slots:
     void weatherUpdating();

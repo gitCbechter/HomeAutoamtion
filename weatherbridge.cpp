@@ -120,6 +120,7 @@ void WeatherBridge::weatherFinished(QNetworkReply *reply)
     }
 
     QString answer = reply->readAll();
+    qDebug() << answer;
     QJsonDocument jsonResponse = QJsonDocument::fromJson(answer.toUtf8());
 
     QJsonObject object = jsonResponse.object();
@@ -136,7 +137,7 @@ void WeatherBridge::weatherFinished(QNetworkReply *reply)
            wds[i].rainLitre = v.toObject().value("rain").toObject().value("3h").toDouble();
            wds[i].humidity = v.toObject().value("main").toObject().value("humidity").toDouble();
            wds[i].pressure = v.toObject().value("main").toObject().value("pressure").toDouble();
-           wds[i].cloudiness = v.toObject().value("clouds").toObject().value("all").toInt();
+           wds[i].cloudiness = (v.toObject().value("clouds").toObject().value("all").toInt());
            wds[i].iconId = v.toObject().value("weather")[0].toObject().value("icon").toString();
            wds[i].dateInfo = v.toObject().value("dt_txt").toString();
 
@@ -169,8 +170,66 @@ void WeatherBridge::weatherFinished(QNetworkReply *reply)
         qDebug() << "maxTemp: " << j << " - " << wds[j].maxTemp;
         qDebug() << "minTemp: " << j << " - " << wds[j].minTemp;
     }
+    double maxTemp = 0;
+    double minTemp = 0;
+    double maxWindSpeed = 0;
+    double minWindSpeed = 0;
+    double maxRain = 0;
+    for(int j=0;j<25;j++)
+    {
+        if (wds[j].maxTemp>maxTemp)
+        {
+            maxTemp = ceil(wds[j].maxTemp);
+            if(static_cast<int16_t>(maxTemp)%2!=0)
+            {
+                if(maxTemp>0)
+                {
+                    maxTemp++;
+                }
+                else
+                {
+                    maxTemp--;
+                }
+            }
+        }
+        if (wds[j].minTemp<minTemp)
+        {
+            minTemp = floor(wds[j].minTemp);
+            if(static_cast<int16_t>(minTemp)%2!=0)
+            {
+                if(minTemp>0)
+                {
+                    minTemp++;
+                }
+                else
+                {
+                    minTemp--;
+                }
+            }
+        }
+        if (wds[j].windSpeed>maxWindSpeed)
+        {
+            maxWindSpeed = ceil(wds[j].windSpeed);
+            if(static_cast<int16_t>(maxWindSpeed)%2!=0)
+            {
+                maxWindSpeed++;
+            }
+        }
+        if (wds[j].windSpeed<minWindSpeed)
+        {
+            minWindSpeed =floor(wds[j].windSpeed);
+        }
+        if (wds[j].rainLitre>maxRain)
+        {
+            maxRain = ceil(wds[j].rainLitre);
+            //if (maxRain > 5){maxRain = 10;}
+            //if (maxRain > 10) {maxRain = 20;}
 
+        }
 
+    }
+
+    sendRanges(maxTemp, minTemp, maxWindSpeed, minWindSpeed, maxRain);
     sendWeatherData0(wds[0].maxTemp, wds[0].minTemp, wds[0].windSpeed, wds[0].snow, wds[0].rainLitre, wds[0].humidity, wds[0].pressure, wds[0].cloudiness, wds[0].iconId, wds[0].dateInfo);
 
     sendWeatherData1(wds[1].maxTemp, wds[1].minTemp, wds[1].windSpeed, wds[1].snow, wds[1].rainLitre, wds[1].humidity, wds[1].pressure, wds[1].cloudiness, wds[1].iconId, wds[1].dateInfo);

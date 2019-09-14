@@ -15,6 +15,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
     homebridge.cpp \
+    newstickerdata.cpp \
     weatherbridge.cpp \
     weatherdata.cpp \
     ctrlbridge.cpp \
@@ -43,6 +44,7 @@ DISTFILES += \
 
 HEADERS += \
     homebridge.h \
+    newstickerdata.h \
     weatherbridge.h \
     weatherdata.h \
     ctrlbridge.h \

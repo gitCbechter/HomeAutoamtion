@@ -15,6 +15,7 @@
 #include <QTime>
 #include "hal.h"
 #include "calcs.h"
+
 /*********************************************************************
 *Defines & Enums
 *********************************************************************/
@@ -39,9 +40,7 @@
 
 #define SW_HUT              0x0001
 #define SW_PUMP             0x0002
-
-
-#define SW_WIN              0x0001
+#define SW_WIN              0x0003
 
 
 
@@ -69,6 +68,7 @@ public:
     void setActorContent(eActorIndex actorID, uint16_t data, eActorCmdType cmd);
     int getBusData(uint8_t *ptr);
     uint16_t checkBusData(uint8_t *ptr, uint16_t len);
+    void protocolHandler();
 
     Hal *myHal;
     Calcs *myCalcs;

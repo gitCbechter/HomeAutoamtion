@@ -124,12 +124,12 @@ Item {
                 id: sunWFtext
                 x: 36
                 anchors.verticalCenter: parent.verticalCenter
-                text: "  Clouds: \n" + "  " + cloudiness + "%"
+                text: cloudiness + "%"
                 color:"black"                
                 font.family: "Verdana"
                 renderType: Text.NativeRendering
                 font.weight:  Font.DemiBold
-                font.pointSize:  8.0
+                font.pointSize:  10.0
             }
 
         }
